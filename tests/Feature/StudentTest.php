@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 class StudentTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      */
@@ -18,5 +19,17 @@ class StudentTest extends TestCase
 
         $response->assertStatus(200);
     }
+    public function test_create_student(): void
+    {
 
+        $student=[
+            'lastname'=>'Kujo',
+            'firstname'=>'Jotaro',
+            'mail'=>'jotaro@kujo.fr'
+        ];
+
+        $response = $this->post('/students',$student);
+
+        $response->assertCreated();
+    }
 }
