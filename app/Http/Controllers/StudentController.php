@@ -21,11 +21,14 @@ class StudentController extends Controller
     {
         // Store a new resource in the database
         $student = new Student;
-        $student->lastname=$request->lastname;
-        $student->firstname=$request->firstname;
-        $student->mail=$request->mail;
+        $student->lastname = $request->lastname;
+        $student->firstname = $request->firstname;
+        $student->mail = $request->mail;
+        $student->study = $request->study;
+    
         $student->save();
-        return response(status:201);
+
+        return redirect()->route('students.index', status: 201);
     }
 
     public function show($id)
