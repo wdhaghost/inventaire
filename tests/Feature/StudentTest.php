@@ -25,7 +25,8 @@ class StudentTest extends TestCase
         $student=[
             'lastname'=>'Kujo',
             'firstname'=>'Jotaro',
-            'mail'=>'jotaro@kujo.fr'
+            'mail'=>'jotaro@kujo.fr',
+            'study'=>1
         ];
 
         $response = $this->post('/students',$student);
