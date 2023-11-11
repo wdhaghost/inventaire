@@ -29,8 +29,8 @@ class StudentTest extends TestCase
     }
     public function test_show_route(): void
     {
-        $student =
-            $response = $this->get('/students/{$student->id}');
+        $student =Student::factory()->create();
+            $response = $this->get("/students/{$student->id}");
 
         $response->assertStatus(200);
         $response->assertViewIs('students.show');
@@ -50,9 +50,16 @@ class StudentTest extends TestCase
 
     public function test_edit_route(): void
     {
-        $response = $this->get('students/{id}/edit');
+        $student = Student::factory()->create();
+
+        $response = $this->get("students/{$student->id}/edit");
         $response->assertStatus(200);
         $response->assertViewIs('students.edit');
+    }
+    public function test_edit_non_existant_route(): void
+    {
+        $response = $this->get('/students/999/edit');
+        $response->assertStatus(404);
     }
     public function test_store_route(): void
     {
