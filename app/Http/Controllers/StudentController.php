@@ -30,7 +30,7 @@ class StudentController extends Controller
                 'lastname' => 'required|string|min:3',
                 'firstname' => 'required|string|min:3',
                 'mail' => 'required|email|unique:students',
-                'study' => 'required|integer|min:1|max:5'
+                'study' => 'required|integer|min:1|max:10'
 
             ]);
             $student = new Student;
